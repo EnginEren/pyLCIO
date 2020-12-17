@@ -45,7 +45,7 @@ jobs:
           context: .
           file: ./Dockerfile.pyLCIO3
           push: true  
-          tags: ilcsoft/py3lcio:lcio-15-04_v4
+          tags: ilcsoft/py3lcio:latest
           
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
