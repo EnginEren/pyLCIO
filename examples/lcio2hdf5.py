@@ -5,6 +5,7 @@ import numpy as np
 import h5py 
 import awkward1 as ak 
 import argparse
+import math
 
 from functions import CellIDDecoder
 
@@ -42,6 +43,11 @@ def fill_record(inpLCIO, collection):
             b.begin_record()
             b.field("E")
             b.real(enr.getEnergy())
+            ## calculate polar angle theta and fill
+            pVec = enr.getMomentum()
+            theta = 90.0 - math.atan(pVec[2]/pVec[1])
+            b.real(theta)
+            b.field("theta")
             b.end_record() 
     
         ## ECAL barrel collection
