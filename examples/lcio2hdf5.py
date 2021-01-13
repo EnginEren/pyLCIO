@@ -44,10 +44,10 @@ def fill_record(inpLCIO, collection):
             b.field("E")
             b.real(enr.getEnergy())
             ## calculate polar angle theta and fill
+            b.field("theta")
             pVec = enr.getMomentum()
             theta = 90.0 - math.atan(pVec[2]/pVec[1])
             b.real(theta)
-            b.field("theta")
             b.end_record() 
     
         ## ECAL barrel collection
