@@ -46,7 +46,7 @@ def fill_record(inpLCIO, collection):
             ## calculate polar angle theta and fill
             b.field("theta")
             pVec = enr.getMomentum()
-            theta = 90.0 - math.atan(pVec[2]/pVec[1])
+            theta = math.pi/2.00 - math.atan(pVec[2]/pVec[1])
             b.real(theta)
             b.end_record() 
     
