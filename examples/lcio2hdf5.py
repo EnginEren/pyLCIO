@@ -95,6 +95,7 @@ def fill_numpy(record):
     ## Unable to escape using python list here. But we can live with that.
     l = []
     E = []
+    theta = []
     for i in range(0, nevents):
 
         #Get hits and convert them into numpy array 
@@ -106,6 +107,11 @@ def fill_numpy(record):
         #Get indicent photon energies
         incE = ak.to_numpy(record[i].E)
         E.append(incE.compressed()[0])
+
+        #Get polar angle theta of the gun
+        inTh = ak.to_numpy(record[i].theta)
+        theta.append(inTh.compressed()[0])
+
 
 
         layers = []
@@ -121,11 +127,12 @@ def fill_numpy(record):
    
         l.append(layers)
     
-     ## convert them into numpy array
+    ## convert them into numpy array
     shower = np.asarray(l)
-    e0 = np.reshape(np.asarray(E),(-1,1))
+    e0 = np.reshape(np.asarray(E), (-1,1))
+    t0 = np.reshape(np.asarray(theta), (-1,1))
 
-    return shower, e0
+    return shower, e0, t0
 
 if __name__=="__main__":
 
@@ -146,7 +153,7 @@ if __name__=="__main__":
     # STEP 1: create awkward array from LCIO
     record = fill_record(inpLCIO, collection)
     # STEP 2: convert them into numpy arrays
-    showers, e0 = fill_numpy(record)
+    showers, e0, t0 = fill_numpy(record)
     
     #Open HDF5 file for writing
     hf = h5py.File(out, 'w')
@@ -155,6 +162,7 @@ if __name__=="__main__":
 
     ## write to hdf5 files
     grp.create_dataset('energy', data=e0)
+    grp.create_dataset('theta', data=t0)
     grp.create_dataset('layers', data=showers)
 
     #close file
