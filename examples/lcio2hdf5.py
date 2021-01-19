@@ -92,7 +92,10 @@ def fill_numpy(record):
     binX = np.arange(-81, 82, 5.088333)
     #binZ = np.arange(-77, 78, 5.088333)
     #new z-shifted bin in Z
-    binZ = np.arange(-70, 83, 5.088333)
+    #binZ = np.arange(-70, 83, 5.088333)
+    #new z- asymmetric bin
+    binZ = np.arange(-155, 0, 5.088333)
+    
 
     ## Unable to escape using python list here. But we can live with that.
     l = []
