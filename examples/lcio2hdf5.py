@@ -95,7 +95,7 @@ def fill_numpy(record):
     #binZ = np.arange(-70, 83, 5.088333)
     #new z- asymmetric bin
     #binZ = np.arange(-100, 55, 5.088333)
-    binZ = np.arange(-80, 76, 5.088333)
+    binZ = np.arange(-65, 90, 5.088333)
 
     ## Unable to escape using python list here. But we can live with that.
     l = []
