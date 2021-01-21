@@ -94,7 +94,8 @@ def fill_numpy(record):
     #new z-shifted bin in Z
     #binZ = np.arange(-70, 83, 5.088333)
     #new z- asymmetric bin
-    binZ = np.arange(-90, 65, 5.088333)
+    #binZ = np.arange(-90, 65, 5.088333)
+    binZ = np.arange(-80, 75, 5.088333)
     #binZ = np.arange(-45, 110, 5.088333)
     #binZ = np.arange(-35, 121, 5.088333)
 
