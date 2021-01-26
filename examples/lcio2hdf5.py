@@ -16,7 +16,7 @@ hmap = np.array([1811, 1814, 1824, 1827, 1836, 1839, 1849,
                     1971, 1976, 1988, 1993, 2005, 2010])
 
 
-def fill_record(inpLCIO, collection):
+def fill_record(inpLCIO, collection, nevents):
     """this function reads all events in LCIO file and put them into awkward array"""
 
     ## open LCIO file
@@ -94,7 +94,18 @@ def fill_numpy(record):
     #new z-shifted bin in Z
     #binZ = np.arange(-70, 83, 5.088333)
     #new z- asymmetric bin
-    binZ = np.arange(-100, 55, 5.088333)
+    #binZ = np.arange(-90, 65, 5.088333)
+    #binZ = np.arange(-80, 75, 5.088333)
+    #binZ = np.arange(-65, 90, 5.088333)
+    #binZ = np.arange(-45, 110, 5.088333)
+    #binZ = np.arange(-35, 121, 5.088333)
+
+    #binZ with 40 
+    #binZ = np.arange(-100, 105, 5.088333)
+    #binZ = np.arange(-104, 106, 5.088333)
+    #binZ = np.arange(-97, 111, 5.088333)
+    #binZ = np.arange(-104.3, 101.2, 5.088333)
+    binZ = np.arange(-115, 100, 5.088333)
 
     ## Unable to escape using python list here. But we can live with that.
     l = []
@@ -155,7 +166,7 @@ if __name__=="__main__":
     out = str(opt.output)
 
     # STEP 1: create awkward array from LCIO
-    record = fill_record(inpLCIO, collection)
+    record = fill_record(inpLCIO, collection, nevents)
     # STEP 2: convert them into numpy arrays
     showers, e0, t0 = fill_numpy(record)
     

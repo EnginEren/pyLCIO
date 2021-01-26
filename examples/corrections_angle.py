@@ -30,7 +30,7 @@ def correct2D(dpath, BATCH_SIZE):
         dataiter = iter(dataloader)
         batch = dataiter.next()
 
-    real_data = batch[0] # 32x30 calo layers
+    real_data = batch[0] # 32x40 calo layers
     real_data = real_data.numpy()
 
     real_energy = batch[1]
@@ -42,6 +42,9 @@ def correct2D(dpath, BATCH_SIZE):
     real_angle = real_angle.numpy()
 
 
+    ## this is implemented by Anatolii
+    ## correcting empty x-positions due to staggering effects in realistic calorimeter
+    ## x-dimension changes 32 ---> 30
     real_d = real_data.mean(axis=0)
     for layer_pos in range(len(real_d)):
         for row_pos in range(len(real_d[0])):
@@ -49,7 +52,17 @@ def correct2D(dpath, BATCH_SIZE):
                 for i in range(row_pos, 0, -1):
                     real_data[:, layer_pos, i] = real_data[:, layer_pos, i-1]
     real_data = real_data[:, :, 1:-1]
-    
+    #####
+
+   ## We need to correct for z-positions as well
+   ## z-dimension should change from 42 ----> 40 
+
+
+
+
+   #####
+
+
 
     return real_data, real_energy, real_angle
 
