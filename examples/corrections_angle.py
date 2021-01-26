@@ -42,7 +42,7 @@ def correct2D(dpath, BATCH_SIZE):
     real_angle = real_angle.numpy()
 
 
-    ## this is implemented by Anatolii
+    ### this is implemented by Anatolii
     ## correcting empty x-positions due to staggering effects in realistic calorimeter
     ## x-dimension changes 32 ---> 30
     real_d = real_data.mean(axis=0)
@@ -51,16 +51,14 @@ def correct2D(dpath, BATCH_SIZE):
             if real_d[layer_pos, row_pos].sum().item() < 0.001:
                 for i in range(row_pos, 0, -1):
                     real_data[:, layer_pos, i] = real_data[:, layer_pos, i-1]
-    real_data = real_data[:, :, 1:-1]
+    ## correcting empty y-positions due to staggering effects in realistic calorimeter
+    ## x-dimension changes 42 ---> 40
+        for column_pos in range(real_d.shape[2]):
+            if real_d[layer_pos, :, column_pos].sum().item() == 0 :
+                for i in range(column_pos, 0, -1):
+                    real_data[:, layer_pos, :, i] = real_data[:, layer_pos, :, i-1]
+    real_data = real_data[:, :, 1:-1, 1:-1]
     #####
-
-   ## We need to correct for z-positions as well
-   ## z-dimension should change from 42 ----> 40 
-
-
-
-
-   #####
 
 
 
