@@ -105,7 +105,7 @@ def fill_numpy(record):
     #binZ = np.arange(-104, 106, 5.088333)
     #binZ = np.arange(-97, 111, 5.088333)
     #binZ = np.arange(-104.3, 101.2, 5.088333)
-    binZ = np.arange(-105, 110, 5.088333)
+    binZ = np.arange(-99, 115, 5.088333)
 
     ## Unable to escape using python list here. But we can live with that.
     l = []
