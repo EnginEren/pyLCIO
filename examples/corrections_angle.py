@@ -54,7 +54,7 @@ def correct2D(dpath, BATCH_SIZE):
     ## correcting empty y-positions due to staggering effects in realistic calorimeter
     ## y-dimension changes 42 ---> 40
         for column_pos in range(real_d.shape[2]):
-            if real_d[:, layer_pos, column_pos].sum().item() == 0 :
+            if real_d[layer_pos, :, column_pos].sum().item() == 0 :
                 for i in range(column_pos, 0, -1):
                     real_data[:, layer_pos, :, i] = real_data[:, layer_pos, :, i-1]
     real_data = real_data[:, :, 1:-1, 1:-1]
