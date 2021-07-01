@@ -7,3 +7,4 @@ examples/v02-02-noPhotoncor/*.slcio
 examples/v02-02/*.slcio
 examples/__pycache__/
 examples/*.hdf5
+examples/
