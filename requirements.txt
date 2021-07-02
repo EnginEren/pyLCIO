@@ -6,3 +6,5 @@ scipy
 h5py
 awkward1
 streamlit
+mplhep
+uncertainties

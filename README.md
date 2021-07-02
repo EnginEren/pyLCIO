@@ -1,14 +1,8 @@
 
 ### Local 
 
-If you want to use `ROOT`: 
 ```bash
-docker run -it --rm -v $PWD/pyLCIO/examples:/home/ilc/data -p 8888:8888 ilcsoft/py3lcio bash
-```
-
-If you wish to use `matplotlib`:
-```bash
-docker run -it --rm -v $PWD/pyLCIO/examples:/home/ilc/data -p 8888:8888 ilcsoft/py3lcio:lcio-15-04_v3 bash
+docker run -it --rm -v $PWD/pyLCIO/examples:/home/ilc/data -p 8888:8888 ilcsoft/py3lcio:lcio-16 bash
 ```
 
 this will spin up a container with port mappings to your local PC as well as a local path mounted on to the container.
